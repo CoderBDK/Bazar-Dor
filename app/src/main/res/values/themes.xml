@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.BazarDor" parent="Base.Theme.BazarDor" />
+    <style name="Theme.Preload" parent="Base.Theme.BazarDor">
+        <item name="android:windowBackground">@drawable/preload_splash_screen</item>
+    </style>
 </resources>

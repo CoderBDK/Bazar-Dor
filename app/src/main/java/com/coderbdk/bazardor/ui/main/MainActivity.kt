@@ -1,7 +1,8 @@
-package com.coderbdk.bazardor
+package com.coderbdk.bazardor.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.coderbdk.bazardor.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

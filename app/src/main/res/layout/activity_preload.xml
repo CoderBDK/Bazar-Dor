@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.preload.PreloadActivity">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/logoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/abok"
+        android:gravity="center_horizontal|bottom"
+        android:text="@string/bazar_dor"
+        android:textColor="#C26C05"
+        android:textSize="55sp"
+        app:layout_constraintTop_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textSize="35sp"
+        android:lines="1"
+        android:gravity="center"
+        android:text="@string/loading"
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="436dp"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toTopOf="@id/logoTitle"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

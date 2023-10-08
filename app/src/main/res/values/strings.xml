@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bazar Dor</string>
+    <string name="bazar_dor">বাজারদর</string>
+    <string name="loading">______________________________</string>
 </resources>
