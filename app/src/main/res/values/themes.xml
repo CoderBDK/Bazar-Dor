@@ -3,10 +3,31 @@
     <style name="Base.Theme.BazarDor" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/day_primary</item>
+        <item name="colorOnPrimary">@color/day_on_primary</item>
+        <item name="colorSecondary">@color/day_secondary</item>
+        <item name="colorOnSecondary">@color/day_on_secondary</item>
+        <item name="background">@color/day_background</item>
+        <item name="colorOnBackground">@color/day_on_background</item>
+        <item name="android:textColor">@color/day_on_primary</item>
+        <item name="colorSurface">@color/day_surface</item>
+        <item name="colorOnSurface">@color/day_on_surface</item>
+        <item name="android:popupBackground">@color/day_primary</item>
     </style>
 
     <style name="Theme.BazarDor" parent="Base.Theme.BazarDor" />
     <style name="Theme.Preload" parent="Base.Theme.BazarDor">
         <item name="android:windowBackground">@drawable/preload_splash_screen</item>
+    </style>
+
+    <style name="ThemeDay.ActionBar" parent="Base.Theme.BazarDor">
+        <item name="android:background">@drawable/day_action_bar_bg</item>
+    </style>
+
+    <style name="ThemeDay.Icon" parent="Base.Theme.BazarDor">
+        <item name="tint">@color/day_on_primary</item>
+    </style>
+    <style name="ThemeDay.Spinner" parent="Base.Theme.BazarDor">
+        <item name="android:background">@color/day_primary</item>
     </style>
 </resources>
