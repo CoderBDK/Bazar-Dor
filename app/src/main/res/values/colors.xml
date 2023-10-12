@@ -3,9 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="day_primary">#6750A4</color>
+    <color name="day_primary">#00897B</color>
     <color name="day_on_primary">#FFFFFF</color>
-    <color name="day_secondary">#625B71</color>
+    <color name="day_secondary">#5C716F</color>
     <color name="day_on_secondary">#FFFFFF</color>
     <color name="day_background">#FEF7FF</color>
     <color name="day_on_background">#1D1B20</color>

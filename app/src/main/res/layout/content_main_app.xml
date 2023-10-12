@@ -5,19 +5,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
     tools:showIn="@layout/app_bar_main_app"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:padding="5dp"
+            android:gravity="center"
+            style="@style/ThemeDay.BG"
+            android:padding="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginRight="5dp"
+                android:text="Choose category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:scaleType="centerCrop"
+                style="@style/ThemeDay.Icon"
+                android:src="@drawable/baseline_arrow_drop_down_circle_24"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
             <androidx.appcompat.widget.AppCompatSpinner
                 android:padding="15dp"
                 style="@style/ThemeDay.Spinner"
@@ -29,10 +42,16 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:scaleType="centerCrop"
+                style="@style/ThemeDay.Icon"
+                android:src="@drawable/baseline_calendar_month_24"
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:padding="5dp"
                 android:background="@color/day_primary"
-                android:text="Choose Date"
+                android:text="Pick Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -43,16 +62,10 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-                <include layout="@layout/item_product_list"/>
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>

@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
        >
        <com.google.android.material.appbar.CollapsingToolbarLayout
+           android:layout_marginBottom="1dp"
+           app:contentScrim="@android:color/transparent"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
@@ -116,6 +118,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
+        android:id="@+id/content_main_app"
         layout="@layout/content_main_app"/>
 
 
