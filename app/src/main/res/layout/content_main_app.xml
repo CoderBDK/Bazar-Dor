@@ -31,6 +31,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"/>
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerProductCategory"
                 android:padding="15dp"
                 style="@style/ThemeDay.Spinner"
                 android:entries="@array/choose_category"
