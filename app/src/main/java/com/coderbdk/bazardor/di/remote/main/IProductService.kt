@@ -13,5 +13,4 @@ interface IProductService {
     @FormUrlEncoded
     @POST("product_list.php")
     fun getProductList(@FieldMap param: MutableMap<String,String>): Call<List<Product>>
-
 }

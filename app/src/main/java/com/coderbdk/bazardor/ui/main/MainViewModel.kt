@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.coderbdk.bazardor.di.remote.api.ApiResponse
+import com.coderbdk.bazardor.di.remote.main.Product
 import com.coderbdk.bazardor.di.remote.main.ProductCategory
 import com.coderbdk.bazardor.di.repository.MainRepository
 
@@ -13,7 +14,11 @@ class MainViewModel: ViewModel() {
     private val _productCategoryList = MutableLiveData<List<ProductCategory>>().apply {
         value = listOf()
     }
+    private val _productList = MutableLiveData<List<Product>>().apply {
+        value = listOf()
+    }
     val productCategoryList: LiveData<List<ProductCategory>> = _productCategoryList
+    val productList: LiveData<List<Product>> = _productList
 
     init {
         if(productCategoryList.value?.size ==0){
@@ -22,6 +27,7 @@ class MainViewModel: ViewModel() {
                     {
                     },{
                         _productCategoryList.postValue(it)
+                        getProductByCategoryUID(it[0].uid)
                     },{
                         Log.e(javaClass.simpleName,it)
                     }
@@ -29,4 +35,19 @@ class MainViewModel: ViewModel() {
             )
         }
     }
+
+    fun getProductByCategoryUID(uid: Long){
+        repository.getProductList(uid,
+            ApiResponse(
+                {
+                },{
+                    _productList.postValue(it)
+                },{
+                    Log.e(javaClass.simpleName,it)
+                }
+            )
+        )
+    }
+
+
 }

@@ -15,9 +15,9 @@ class ProductCategoryAdapter(
 ) : BaseAdapter() {
 
     private val _list: List<ProductCategory> = listOf(
-        ProductCategory(10, "a"),
-        ProductCategory(12, "ab"),
-        ProductCategory(13, "abc")
+        ProductCategory(10, "a",""),
+        ProductCategory(12, "ab",""),
+        ProductCategory(13, "abc","")
     )
 
     override fun getCount(): Int {

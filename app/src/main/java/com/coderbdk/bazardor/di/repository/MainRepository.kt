@@ -1,6 +1,7 @@
 package com.coderbdk.bazardor.di.repository
 
 import com.coderbdk.bazardor.di.remote.api.ApiResponse
+import com.coderbdk.bazardor.di.remote.main.Product
 import com.coderbdk.bazardor.di.remote.main.ProductCategory
 import com.coderbdk.bazardor.di.remote.main.ProductService
 import retrofit2.Call
@@ -13,6 +14,25 @@ class MainRepository{
         val map: MutableMap<String,String> = hashMapOf()
         map["api_key"] = "$\\api_key"
         val call = apiService.apiCallProductCategoryList(map, ApiResponse(
+            {
+                apiResponse.onLoad(it)
+            },{
+                apiResponse.onSuccess(it)
+            },{
+                apiResponse.onError(it)
+            }
+        )
+
+        )
+
+        return call
+    }
+
+    fun getProductList(categoryUID: Long, apiResponse: ApiResponse<List<Product>>): Call<List<Product>> {
+        val map: MutableMap<String,String> = hashMapOf()
+        map["api_key"] = "$\\api_key"
+        map["category_uid"] = "$categoryUID"
+        val call = apiService.apiCallProductList(map, ApiResponse(
             {
                 apiResponse.onLoad(it)
             },{
