@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
                     MainViewModel.ResponseState.FAILED -> {
                         dialogNetworkAlert.show(it.first)
+                        hideLoader()
                     }
                 }
             }
