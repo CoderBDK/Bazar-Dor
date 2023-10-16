@@ -121,5 +121,14 @@
         android:id="@+id/content_main_app"
         layout="@layout/content_main_app"/>
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/universalLoaderIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:fitsSystemWindows="true"
+        app:trackThickness="1dp"
+        />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
