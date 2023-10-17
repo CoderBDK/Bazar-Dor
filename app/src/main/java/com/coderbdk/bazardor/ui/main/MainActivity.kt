@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.coderbdk.bazardor.databinding.ActivityMainAppBinding
 import com.coderbdk.bazardor.databinding.ContentBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 
@@ -75,6 +76,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showSnackBar(message: String, color: Int) {
+        Snackbar.make(this,binding.appBarMain.appBar,message,Snackbar.LENGTH_SHORT)
+            .setBackgroundTint(color)
+            .show()
     }
 
     private fun loadProductCategory() {

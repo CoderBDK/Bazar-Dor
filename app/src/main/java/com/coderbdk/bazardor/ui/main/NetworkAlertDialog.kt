@@ -15,27 +15,18 @@ class NetworkAlertDialog(context: Context) {
     }
 
     private var listener: NetworkDialogListener? = null
-    private var isDismiss = true
     init {
         dialog = MaterialAlertDialogBuilder(context)
             .setTitle("Connection failed")
             .setMessage("Please check your internet connection.")
             .setCancelable(false)
             .setNegativeButton("Check connection") { _, _ ->
-                listener?.let {
-                    it.onNegativeEvent()
-                }
+                listener?.onNegativeEvent()
             }
             .setPositiveButton("Retry again") { _, _ ->
-                listener?.let {
-                    it.onPositiveEvent()
-                }
+                listener?.onPositiveEvent()
             }
             .create()
-
-        dialog.setOnDismissListener {
-            if(!isDismiss)dialog.show()
-        }
     }
 
     fun addNetworkDialogListener(listener: NetworkDialogListener) {
@@ -43,13 +34,11 @@ class NetworkAlertDialog(context: Context) {
     }
 
     fun show(message: String) {
-       isDismiss = false
         dialog.setMessage(message)
         if (!dialog.isShowing) dialog.show()
     }
 
     fun hide() {
-        isDismiss = true
         if (dialog.isShowing) dialog.dismiss()
     }
 }

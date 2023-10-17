@@ -16,10 +16,10 @@
            app:contentScrim="@android:color/transparent"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+           app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed"
            app:toolbarId="@id/toolbar">
            <LinearLayout
-               android:background="@color/day_secondary"
+               style="@style/Theme.Ads"
                android:paddingTop="75dp"
                app:layout_scrollEffect="compress"
                app:layout_collapseMode="parallax"
@@ -68,7 +68,7 @@
                android:layout_height="75dp"
                app:layout_collapseMode="pin"
                android:gravity="top"
-               style="@style/ThemeDay.ActionBar"
+               style="@style/Theme.ActionBar"
                >
 
                <LinearLayout
@@ -96,12 +96,12 @@
                            android:paddingLeft="5dp"
                            android:textSize="10sp"
                            android:fontFamily="@font/abok"
-                           android:text="@string/bazar_dor"
+                           android:text="@string/bazar_dor_sologan"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"/>
                    </LinearLayout>
                    <ImageView
-                       style="@style/ThemeDay.Icon"
+                       style="@style/Theme.Icon"
                        android:layout_marginRight="10dp"
                        android:src="@drawable/baseline_menu_24"
                        android:layout_width="40dp"

@@ -3,71 +3,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:gravity="center"
-            style="@style/ThemeDay.BG"
-            android:padding="10dp"
+            style="@style/Theme.ActionBottomBar"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
+                android:textSize="17sp"
                 android:layout_marginRight="5dp"
-                android:text="Category"
+                android:text="@string/product_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:scaleType="centerCrop"
-                style="@style/ThemeDay.Icon"
-                android:src="@drawable/baseline_arrow_drop_down_circle_24"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
             <androidx.appcompat.widget.AppCompatSpinner
                 android:layout_weight="1.0"
                 android:id="@+id/spinnerProductCategory"
-                android:padding="15dp"
-                style="@style/ThemeDay.Spinner"
+                style="@style/Theme.Spinner"
                 android:entries="@array/choose_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:scaleType="centerCrop"
-                style="@style/ThemeDay.Icon"
+                style="@style/Theme.Icon"
                 android:src="@drawable/baseline_calendar_month_24"
-                android:layout_width="35dp"
-                android:layout_height="35dp"/>
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
             <androidx.appcompat.widget.AppCompatButton
+                android:textSize="17sp"
                 android:padding="5dp"
                 android:background="@color/day_primary"
-                android:text="Pick Date"
+                android:text="@string/pick_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-        <TextView
-            android:padding="10dp"
-            android:textColor="@color/day_on_background"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginRight="5dp"
-            android:text="@string/today_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
+
             <LinearLayout
+                style="@style/Theme.Product"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <TextView
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/today_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
 
 </LinearLayout>

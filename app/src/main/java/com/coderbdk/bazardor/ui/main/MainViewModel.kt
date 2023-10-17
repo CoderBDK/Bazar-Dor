@@ -62,8 +62,11 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    private val oldUID = MutableLiveData<Long>().apply {
+        value = -1
+    }
     fun getProductByCategoryUID(uid: Long) {
-        if (_productList.value?.size == 0) {
+        if (_productList.value?.size == 0 || oldUID.value != uid) {
             _responseState.value = makeResponseState("init", ResponseState.INITIAL)
             repository.getProductList(uid,
                 ApiResponse(
@@ -71,6 +74,7 @@ class MainViewModel : ViewModel() {
                     }, {
                         _responseState.value = makeResponseState("accepted", ResponseState.ACCEPTED)
                         _productList.postValue(it)
+                        oldUID.postValue(uid)
                     }, {
                         Log.e(javaClass.simpleName, it)
                         _responseState.value = makeResponseState(it, ResponseState.FAILED)
@@ -83,6 +87,7 @@ class MainViewModel : ViewModel() {
     fun retry() {
         load()
     }
+
 
 
 }

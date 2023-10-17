@@ -20,17 +20,27 @@
         <item name="android:windowBackground">@drawable/preload_splash_screen</item>
     </style>
 
-    <style name="ThemeDay.ActionBar" parent="Base.Theme.BazarDor">
+    <style name="Theme.ActionBar" parent="Base.Theme.BazarDor">
         <item name="android:background">@drawable/day_action_bar_bg</item>
     </style>
 
-    <style name="ThemeDay.Icon" parent="Base.Theme.BazarDor">
+    <style name="Theme.Icon" parent="Base.Theme.BazarDor">
         <item name="tint">@color/day_on_primary</item>
     </style>
-    <style name="ThemeDay.Spinner" parent="Base.Theme.BazarDor">
+    <style name="Theme.Spinner" parent="Base.Theme.BazarDor">
+        <item name="android:popupBackground">@color/day_primary</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+    <style name="Theme.ActionBottomBar" parent="Base.Theme.BazarDor">
         <item name="android:background">@color/day_primary</item>
     </style>
-    <style name="ThemeDay.BG" parent="Base.Theme.BazarDor">
+    <style name="Theme.Ads" parent="Base.Theme.BazarDor">
+        <item name="android:background">#093A16</item>
+    </style>
+    <style name="Theme.Product" parent="Base.Theme.BazarDor">
+        <item name="android:background">#0A3E17</item>
+    </style>
+    <style name="Theme.ProductItem" parent="Base.Theme.BazarDor">
         <item name="android:background">@color/day_primary</item>
     </style>
 </resources>
