@@ -2,19 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
-    style="@style/Theme.ProductItem"
     android:layout_margin="1dp">
+    <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCardViewFilledStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
     <LinearLayout
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"
+        <com.google.android.material.card.MaterialCardView
+            style="?attr/materialCardViewFilledStyle"
+            app:cardCornerRadius="15dp"
             android:layout_width="75dp"
-            android:layout_height="75dp"/>
+            android:layout_height="75dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/product_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        </com.google.android.material.card.MaterialCardView>
         <LinearLayout
             android:layout_marginLeft="10dp"
             android:orientation="vertical"
@@ -34,4 +45,5 @@
                 android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

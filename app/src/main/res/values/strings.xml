@@ -5,7 +5,7 @@
     <string name="loading">______________________________</string>
     <string name="price">মূল্য: %.02f টাকা %s</string>
     <string name="today_price">আজকের দর</string>
-    <string name="product_category">পণ্য তালিকা: </string>
-    <string name="pick_date">তারিখ বাছাই</string>
+    <string name="product_category">তালিকা: </string>
+    <string name="pick_date">তারিখ</string>
 
 </resources>

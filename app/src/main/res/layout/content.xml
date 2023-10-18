@@ -1,69 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <LinearLayout
-
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:gravity="center"
-            style="@style/Theme.ActionBottomBar"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.circularreveal.cardview.CircularRevealCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:textSize="17sp"
-                android:layout_marginRight="5dp"
-                android:text="@string/product_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_weight="1.0"
-                android:id="@+id/spinnerProductCategory"
-                style="@style/Theme.Spinner"
-                android:entries="@array/choose_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:scaleType="centerCrop"
-                style="@style/Theme.Icon"
-                android:src="@drawable/baseline_calendar_month_24"
-                android:layout_width="25dp"
-                android:layout_height="25dp"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:textSize="17sp"
-                android:padding="5dp"
-                android:background="@color/day_primary"
-                android:text="@string/pick_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            style="?attr/materialCardViewElevatedStyle"
+            app:cardCornerRadius="0dp">
 
 
             <LinearLayout
-                style="@style/Theme.Product"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/today_price"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/product_category"
+                    android:textSize="17sp" />
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerProductCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:entries="@array/choose_category" />
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.Material3.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="@string/pick_date"
+                    android:textSize="17sp"
+                    app:icon="@drawable/baseline_calendar_month_24" />
             </LinearLayout>
+        </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:padding="10dp"
+                android:text="@string/today_price"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
     </LinearLayout>
 
