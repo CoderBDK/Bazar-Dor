@@ -27,17 +27,20 @@
             android:layout_height="match_parent"/>
         </com.google.android.material.card.MaterialCardView>
         <LinearLayout
+            android:gravity="center"
             android:layout_marginLeft="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:fontFamily="@font/abok"
                 android:id="@+id/name"
                 android:textSize="25sp"
                 android:text="@string/bazar_dor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:fontFamily="@font/abok"
                 android:id="@+id/price"
                 android:textSize="18sp"
                 android:text="@string/bazar_dor"

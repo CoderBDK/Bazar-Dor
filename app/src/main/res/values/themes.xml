@@ -30,11 +30,19 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
 
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/md_theme_light_onPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
     <style name="Theme.BazarDor" parent="Base.Theme.BazarDor" />
     <style name="Theme.Preload" parent="Base.Theme.BazarDor">
         <item name="android:windowBackground">@drawable/preload_splash_screen</item>
+    </style>
+
+    <style name="Theme.ProductLoading" parent="Base.Theme.BazarDor">
+        <item name="android:background">@color/md_theme_light_inverseOnSurface</item>
     </style>
 
 </resources>

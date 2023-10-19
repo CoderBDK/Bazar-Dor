@@ -53,6 +53,9 @@
             </LinearLayout>
         </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -66,13 +69,27 @@
                 android:text="@string/today_price"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/productLoading"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+                <include layout="@layout/item_product_loading"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
-
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 </LinearLayout>

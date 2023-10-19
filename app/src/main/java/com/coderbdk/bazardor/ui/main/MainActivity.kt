@@ -2,6 +2,8 @@ package com.coderbdk.bazardor.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainAppBinding
     private lateinit var contentMain: ContentBinding
     private lateinit var viewModel: MainViewModel
+    private var isNightMode = false
     private val dialogNetworkAlert by lazy { NetworkAlertDialog(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,21 @@ class MainActivity : AppCompatActivity() {
         loadProductAdapter()
         loadNetworkResponseListener()
         loadDialogNetwork()
+        checkThemeMode()
+    }
+    private fun checkThemeMode() {
+
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                isNightMode = false
+                if (Build.VERSION.SDK_INT <= 23) {
+                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                }
+            } // Night mode is not active, we're using the light theme.
+            Configuration.UI_MODE_NIGHT_YES -> {
+                isNightMode = true
+            } // Night mode is active, we're using dark theme.
+        }
     }
 
     private fun loadDialogNetwork() {
@@ -61,12 +79,16 @@ class MainActivity : AppCompatActivity() {
             viewModel.responseState.collect {
                 when (it.second) {
                     MainViewModel.ResponseState.INITIAL -> {
+                        if(!contentMain.productLoading.isVisible) contentMain.productLoading.isVisible = true
+                        if(contentMain.recyclerView.isVisible) contentMain.recyclerView.isVisible = false
                         showLoader()
                     }
 
                     MainViewModel.ResponseState.ACCEPTED -> {
                         dialogNetworkAlert.hide()
                         hideLoader()
+                        if(contentMain.productLoading.isVisible)contentMain.productLoading.isVisible = false
+                        if(!contentMain.recyclerView.isVisible)contentMain.recyclerView.isVisible = true
                     }
 
                     MainViewModel.ResponseState.FAILED -> {

@@ -26,6 +26,9 @@ class MainViewModel : ViewModel() {
     enum class ResponseState {
         INITIAL, ACCEPTED, FAILED
     }
+    enum class ResponseType{
+        PRODUCT_CATEGORY,PRODUCT_ITEM
+    }
 
     private val _responseState = MutableStateFlow(
         Pair("init", ResponseState.INITIAL)
