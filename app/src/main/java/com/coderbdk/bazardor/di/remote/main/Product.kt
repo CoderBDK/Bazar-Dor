@@ -6,7 +6,7 @@ data class Product(
     @SerializedName("name")
     val name: String,
     @SerializedName("price")
-    val price: Float,
+    val price: String,
     @SerializedName("unit")
     val priceUnit: String,
     @SerializedName("img")

@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Bazar Dor</string>
+    <string name="app_name">বাজারদর</string>
     <string name="bazar_dor">বাজারদর</string>
-    <string name="bazar_dor_sologan">প্রতিদিনের বাজারদর জানুন সহজেই এক ক্লিকের মাধ্যমে।</string>
+    <string name="bazar_dor_sologan">প্রতিদিনের নিত্য-প্রয়োজনীয় দ্রব্যের বাজারদর জানুন খুব সহজেই।</string>
     <string name="loading">______________________________</string>
-    <string name="price">মূল্য: %.02f টাকা %s</string>
+    <string name="price">মূল্য: %s টাকা %s</string>
     <string name="today_price">আজকের দর</string>
     <string name="product_category">তালিকা: </string>
     <string name="pick_date">তারিখ</string>

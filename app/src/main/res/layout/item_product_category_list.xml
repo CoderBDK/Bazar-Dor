@@ -17,7 +17,7 @@
             android:padding="10dp">
         <ImageView
             android:layout_marginRight="10dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/category_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"/>
         <TextView

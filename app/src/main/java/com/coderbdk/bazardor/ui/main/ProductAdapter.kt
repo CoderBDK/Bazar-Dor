@@ -13,13 +13,13 @@ import com.coderbdk.bazardor.di.remote.main.Product
 class ProductAdapter(val context: Context,private var list: List<Product>): RecyclerView.Adapter<ProductAdapter.MainHolder>() {
 
 
-    private val _list = arrayOf(
+    /*private val _list = arrayOf(
         Product("Alu",100f,"kg",""),
         Product("Begun",10f,"kg",""),
         Product("Deros",300f,"kg",""),
         Product("Morich",10f,"kg",""),
         Product("Kola",500f,"kg","")
-    )
+    )*/
     class MainHolder(val binding: ItemProductListBinding): ViewHolder(binding.root) {
 
     }
