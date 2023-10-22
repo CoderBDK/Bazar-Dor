@@ -9,23 +9,27 @@ import android.provider.Settings
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.coderbdk.bazardor.databinding.ActivityMainAppBinding
 import com.coderbdk.bazardor.databinding.ContentBinding
+import com.coderbdk.bazardor.di.local.room.AppDatabase
+import com.coderbdk.bazardor.di.repository.MainRepository
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainAppBinding
     private lateinit var contentMain: ContentBinding
-    private lateinit var viewModel: MainViewModel
     private var isNightMode = false
     private val dialogNetworkAlert by lazy { NetworkAlertDialog(this) }
+    private val appDB by lazy { AppDatabase.getInstance(this)!! }
+    private val viewModel: MainViewModel by viewModels {
+        MainViewModelFactory(MainRepository(appDB.productCategoryDao(), appDB.productDao()))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         onInit()
 
+        //appDB.productCategoryDao().insertProductCategory(ProductCategoryEntity(103,"name","url"))
     }
 
     private fun onInit() {
@@ -45,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         loadDialogNetwork()
         checkThemeMode()
     }
+
     private fun checkThemeMode() {
 
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
@@ -79,16 +85,20 @@ class MainActivity : AppCompatActivity() {
             viewModel.responseState.collect {
                 when (it.second) {
                     MainViewModel.ResponseState.INITIAL -> {
-                        if(!contentMain.productLoading.isVisible) contentMain.productLoading.isVisible = true
-                        if(contentMain.recyclerView.isVisible) contentMain.recyclerView.isVisible = false
+                        if (!contentMain.productLoading.isVisible) contentMain.productLoading.isVisible =
+                            true
+                        if (contentMain.recyclerView.isVisible) contentMain.recyclerView.isVisible =
+                            false
                         showLoader()
                     }
 
                     MainViewModel.ResponseState.ACCEPTED -> {
                         dialogNetworkAlert.hide()
                         hideLoader()
-                        if(contentMain.productLoading.isVisible)contentMain.productLoading.isVisible = false
-                        if(!contentMain.recyclerView.isVisible)contentMain.recyclerView.isVisible = true
+                        if (contentMain.productLoading.isVisible) contentMain.productLoading.isVisible =
+                            false
+                        if (!contentMain.recyclerView.isVisible) contentMain.recyclerView.isVisible =
+                            true
                     }
 
                     MainViewModel.ResponseState.FAILED -> {
@@ -101,13 +111,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSnackBar(message: String, color: Int) {
-        Snackbar.make(this,binding.appBarMain.appBar,message,Snackbar.LENGTH_SHORT)
+        Snackbar.make(this, binding.appBarMain.appBar, message, Snackbar.LENGTH_SHORT)
             .setBackgroundTint(color)
             .show()
     }
 
     private fun loadProductCategory() {
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        // viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val adapter = ProductCategoryAdapter(this, viewModel.productCategoryList.value!!)
         contentMain.spinnerProductCategory.adapter = adapter
 
@@ -125,7 +135,11 @@ class MainActivity : AppCompatActivity() {
                     //tv.setTextColor(Color.GREEN)
                     //Toast.makeText(this@MainActivity,"${adapter.getItem(p2).uid}",Toast.LENGTH_SHORT).show()
                     val uid = adapter.getItem(p2).uid
-                    viewModel.getProductByCategoryUID(uid)
+
+                    viewModel.getProductByCategoryUID(
+                        uid,
+                        viewModel.repository.formatTime(System.currentTimeMillis())
+                    )
 
                 }
 

@@ -6,10 +6,13 @@ import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.coderbdk.bazardor.di.local.room.main.ProductCategoryDao
 import com.coderbdk.bazardor.di.local.room.main.ProductCategoryEntity
+import com.coderbdk.bazardor.di.local.room.main.ProductDao
+import com.coderbdk.bazardor.di.local.room.main.ProductEntity
 
-@Database(entities = [ProductCategoryEntity::class], version = 1)
+@Database(entities = [ProductCategoryEntity::class, ProductEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productCategoryDao(): ProductCategoryDao
+    abstract fun productDao(): ProductDao
 
     companion object {
         @Volatile
@@ -25,9 +28,6 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
             return INSTANCE
-        }
-        fun obtain(): AppDatabase{
-            return INSTANCE!!
         }
     }
 }

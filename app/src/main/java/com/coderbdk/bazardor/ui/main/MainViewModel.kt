@@ -4,16 +4,17 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.coderbdk.bazardor.di.remote.api.ApiResponse
 import com.coderbdk.bazardor.di.remote.main.Product
 import com.coderbdk.bazardor.di.remote.main.ProductCategory
 import com.coderbdk.bazardor.di.repository.MainRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(val repository: MainRepository): ViewModel() {
 
-    private val repository: MainRepository = MainRepository()
     private val _productCategoryList = MutableLiveData<List<ProductCategory>>().apply {
         value = listOf()
     }
@@ -36,7 +37,16 @@ class MainViewModel : ViewModel() {
     val responseState: StateFlow<Pair<String, ResponseState>> = _responseState
 
     init {
-        load()
+        viewModelScope.launch {
+            var mList = repository.getLocalProductCategoryList()
+            if(mList.isNotEmpty()){
+                _productCategoryList.postValue(mList)
+                _responseState.value = makeResponseState("done",ResponseState.ACCEPTED)
+            }else{
+                load()
+            }
+
+        }
     }
 
     private fun makeResponseState(
@@ -53,8 +63,15 @@ class MainViewModel : ViewModel() {
                 ApiResponse(
                     {
                     }, {
+                        viewModelScope.launch {
+                            it.forEach { data->
+                               data.apply {
+                                   repository.upsertProductCategory(ProductCategory(uid,name,imgURL))
+                               }
+                            }
+                        }
                         _productCategoryList.postValue(it)
-                        getProductByCategoryUID(it[0].uid)
+                        getProductByCategoryUID(it[0].uid, repository.formatTime(System.currentTimeMillis()))
                         _responseState.value = makeResponseState("accepted", ResponseState.ACCEPTED)
                     }, {
                         Log.e(javaClass.simpleName, it)
@@ -68,23 +85,36 @@ class MainViewModel : ViewModel() {
     private val oldUID = MutableLiveData<Long>().apply {
         value = -1
     }
-    fun getProductByCategoryUID(uid: Long) {
-        if (_productList.value?.size == 0 || oldUID.value != uid) {
-            _responseState.value = makeResponseState("init", ResponseState.INITIAL)
-            repository.getProductList(uid,
-                ApiResponse(
-                    {
-                    }, {
-                        _responseState.value = makeResponseState("accepted", ResponseState.ACCEPTED)
-                        _productList.postValue(it)
-                        oldUID.postValue(uid)
-                    }, {
-                        Log.e(javaClass.simpleName, it)
-                        _responseState.value = makeResponseState(it, ResponseState.FAILED)
-                    }
-                )
-            )
+    fun getProductByCategoryUID(uid: Long, date: String) {
+
+        viewModelScope.launch {
+            if(repository.isLocalProductFound(uid,date)){
+                _responseState.value = makeResponseState("done", ResponseState.ACCEPTED)
+                _productList.postValue(repository.getLocalProductList(uid,date))
+                oldUID.postValue(uid)
+            }else{
+                if (_productList.value?.size == 0 || oldUID.value != uid) {
+                    _responseState.value = makeResponseState("init", ResponseState.INITIAL)
+                    repository.getProductList(uid,
+                        ApiResponse(
+                            {
+                            }, {
+                                viewModelScope.launch {
+                                    repository.upsertProduct(uid,date,it)
+                                }
+                                _responseState.value = makeResponseState("accepted", ResponseState.ACCEPTED)
+                                _productList.postValue(it)
+                                oldUID.postValue(uid)
+                            }, {
+                                Log.e(javaClass.simpleName, it)
+                                _responseState.value = makeResponseState(it, ResponseState.FAILED)
+                            }
+                        )
+                    )
+                }
+            }
         }
+
     }
 
     fun retry() {

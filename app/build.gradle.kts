@@ -41,16 +41,22 @@ android {
 
 dependencies {
 
+    // viewmodels
+    implementation("androidx.activity:activity-ktx:1.8.0")
     // room
     val roomVersion = "2.5.2"
 
+    //noinspection GradleDependency
     implementation("androidx.room:room-runtime:$roomVersion")
+    //noinspection GradleDependency
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // To use Kotlin Symbol Processing (KSP)
+    //noinspection GradleDependency
     ksp("androidx.room:room-compiler:$roomVersion")
 
     // optional - Kotlin Extensions and Coroutines support for Room
+    //noinspection GradleDependency
     implementation("androidx.room:room-ktx:$roomVersion")
     //coroutine
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
