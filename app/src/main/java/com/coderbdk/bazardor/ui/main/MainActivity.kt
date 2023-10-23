@@ -10,16 +10,22 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.coderbdk.bazardor.R
 import com.coderbdk.bazardor.databinding.ActivityMainAppBinding
 import com.coderbdk.bazardor.databinding.ContentBinding
+import com.coderbdk.bazardor.databinding.DialogDatePickerBinding
 import com.coderbdk.bazardor.di.local.room.AppDatabase
+import com.coderbdk.bazardor.di.local.shared.main.MainPrefs
 import com.coderbdk.bazardor.di.repository.MainRepository
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainAppBinding
@@ -30,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory(MainRepository(appDB.productCategoryDao(), appDB.productDao()))
     }
+    private val mainPrefs by lazy { MainPrefs(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +55,35 @@ class MainActivity : AppCompatActivity() {
         loadProductAdapter()
         loadNetworkResponseListener()
         loadDialogNetwork()
+        loadDatePicker()
         checkThemeMode()
+    }
+
+    private fun loadDatePicker() {
+        val calender = Calendar.getInstance()
+        val bindingDatePicker = DialogDatePickerBinding.inflate(layoutInflater)
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.pick_date))
+            .setView(bindingDatePicker.root)
+            .setCancelable(false)
+            .setNegativeButton("Cancel"){_,_->}
+            .setPositiveButton("Confirm"){_,_->
+
+                calender.set(
+                    bindingDatePicker.datePicker.year,
+                    bindingDatePicker.datePicker.month,
+                    bindingDatePicker.datePicker.dayOfMonth
+                )
+                val timeMillis: Long = calender.timeInMillis
+
+                viewModel.getProductByCategoryUID(
+                    contentMain.spinnerProductCategory.selectedItemId,
+                    viewModel.repository.formatTime(timeMillis)
+                )
+            }.create()
+        contentMain.datePick.setOnClickListener {
+            dialog.show()
+        }
     }
 
     private fun checkThemeMode() {
@@ -116,17 +151,21 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+
     private fun loadProductCategory() {
         // viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val adapter = ProductCategoryAdapter(this, viewModel.productCategoryList.value!!)
         contentMain.spinnerProductCategory.adapter = adapter
 
+        var onLoad = true
         viewModel.productCategoryList.observe(this) {
             // list update
             adapter.updateData(it)
             adapter.notifyDataSetChanged()
+
             //Log.i("Result","${it.size}")
         }
+
         contentMain.spinnerProductCategory.onItemSelectedListener =
             object : OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -140,6 +179,7 @@ class MainActivity : AppCompatActivity() {
                         uid,
                         viewModel.repository.formatTime(System.currentTimeMillis())
                     )
+                    mainPrefs.putItemPosition(p2)
 
                 }
 
@@ -148,6 +188,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
+        contentMain.spinnerProductCategory.post {
+            contentMain.spinnerProductCategory.setSelection(mainPrefs.getItemPosition())
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -2,8 +2,9 @@ package com.coderbdk.bazardor.di.local.room.main
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "product", primaryKeys = ["id"])
+@Entity(tableName = "product")
 data class ProductEntity(
     @ColumnInfo(name = "id")
     val uid: Long,
@@ -11,4 +12,8 @@ data class ProductEntity(
     val date: String,
     @ColumnInfo(name = "data")
     val data: String
-)
+){
+    @ColumnInfo("index")
+    @PrimaryKey(autoGenerate = true)
+    var index: Long = 0
+}

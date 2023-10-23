@@ -85,6 +85,9 @@ class MainViewModel(val repository: MainRepository): ViewModel() {
     private val oldUID = MutableLiveData<Long>().apply {
         value = -1
     }
+    private val oldDate = MutableLiveData<String>().apply {
+        value = "00-00-00"
+    }
     fun getProductByCategoryUID(uid: Long, date: String) {
 
         viewModelScope.launch {
@@ -93,7 +96,7 @@ class MainViewModel(val repository: MainRepository): ViewModel() {
                 _productList.postValue(repository.getLocalProductList(uid,date))
                 oldUID.postValue(uid)
             }else{
-                if (_productList.value?.size == 0 || oldUID.value != uid) {
+                if (_productList.value?.size == 0 || (oldUID.value != uid || !oldDate.value.equals(date))) {
                     _responseState.value = makeResponseState("init", ResponseState.INITIAL)
                     repository.getProductList(uid,
                         ApiResponse(
@@ -105,6 +108,7 @@ class MainViewModel(val repository: MainRepository): ViewModel() {
                                 _responseState.value = makeResponseState("accepted", ResponseState.ACCEPTED)
                                 _productList.postValue(it)
                                 oldUID.postValue(uid)
+                                oldDate.postValue(date)
                             }, {
                                 Log.e(javaClass.simpleName, it)
                                 _responseState.value = makeResponseState(it, ResponseState.FAILED)
