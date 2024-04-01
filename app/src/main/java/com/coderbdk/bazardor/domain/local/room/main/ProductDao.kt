@@ -1,7 +1,6 @@
-package com.coderbdk.bazardor.di.local.room.main
+package com.coderbdk.bazardor.domain.local.room.main
 
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Upsert
 

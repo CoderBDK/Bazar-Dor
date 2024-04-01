@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.di.local.room.main
+package com.coderbdk.bazardor.domain.local.room.main
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

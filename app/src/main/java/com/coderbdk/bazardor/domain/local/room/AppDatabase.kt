@@ -1,17 +1,13 @@
-package com.coderbdk.bazardor.di.local.room
+package com.coderbdk.bazardor.domain.local.room
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
-import androidx.room.migration.AutoMigrationSpec
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.coderbdk.bazardor.di.local.room.main.ProductCategoryDao
-import com.coderbdk.bazardor.di.local.room.main.ProductCategoryEntity
-import com.coderbdk.bazardor.di.local.room.main.ProductDao
-import com.coderbdk.bazardor.di.local.room.main.ProductEntity
+import com.coderbdk.bazardor.domain.local.room.main.ProductCategoryDao
+import com.coderbdk.bazardor.domain.local.room.main.ProductCategoryEntity
+import com.coderbdk.bazardor.domain.local.room.main.ProductDao
+import com.coderbdk.bazardor.domain.local.room.main.ProductEntity
 
 @Database(entities = [ProductCategoryEntity::class, ProductEntity::class],
     version = 1,

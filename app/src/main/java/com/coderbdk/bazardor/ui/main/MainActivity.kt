@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
@@ -19,9 +18,9 @@ import com.coderbdk.bazardor.R
 import com.coderbdk.bazardor.databinding.ActivityMainAppBinding
 import com.coderbdk.bazardor.databinding.ContentBinding
 import com.coderbdk.bazardor.databinding.DialogDatePickerBinding
-import com.coderbdk.bazardor.di.local.room.AppDatabase
-import com.coderbdk.bazardor.di.local.shared.main.MainPrefs
-import com.coderbdk.bazardor.di.repository.MainRepository
+import com.coderbdk.bazardor.domain.local.room.AppDatabase
+import com.coderbdk.bazardor.domain.local.shared.main.MainPrefs
+import com.coderbdk.bazardor.domain.repository.MainRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch

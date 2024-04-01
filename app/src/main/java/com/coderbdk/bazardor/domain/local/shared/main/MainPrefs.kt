@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.di.local.shared.main
+package com.coderbdk.bazardor.domain.local.shared.main
 
 import android.content.Context
 import android.content.SharedPreferences

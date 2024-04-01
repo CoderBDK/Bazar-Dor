@@ -1,7 +1,7 @@
-package com.coderbdk.bazardor.di.remote.main
+package com.coderbdk.bazardor.domain.remote.main
 
-import com.coderbdk.bazardor.di.remote.api.ApiResponse
-import com.coderbdk.bazardor.di.remote.api.RemoteApiService
+import com.coderbdk.bazardor.domain.remote.api.ApiResponse
+import com.coderbdk.bazardor.domain.remote.api.RemoteApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

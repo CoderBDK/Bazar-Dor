@@ -1,14 +1,14 @@
-package com.coderbdk.bazardor.di.repository
+package com.coderbdk.bazardor.domain.repository
 
 import android.annotation.SuppressLint
-import com.coderbdk.bazardor.di.local.room.main.ProductCategoryDao
-import com.coderbdk.bazardor.di.local.room.main.ProductCategoryEntity
-import com.coderbdk.bazardor.di.local.room.main.ProductDao
-import com.coderbdk.bazardor.di.local.room.main.ProductEntity
-import com.coderbdk.bazardor.di.remote.api.ApiResponse
-import com.coderbdk.bazardor.di.remote.main.Product
-import com.coderbdk.bazardor.di.remote.main.ProductCategory
-import com.coderbdk.bazardor.di.remote.main.ProductService
+import com.coderbdk.bazardor.domain.local.room.main.ProductCategoryDao
+import com.coderbdk.bazardor.domain.local.room.main.ProductCategoryEntity
+import com.coderbdk.bazardor.domain.local.room.main.ProductDao
+import com.coderbdk.bazardor.domain.local.room.main.ProductEntity
+import com.coderbdk.bazardor.domain.remote.api.ApiResponse
+import com.coderbdk.bazardor.domain.remote.main.Product
+import com.coderbdk.bazardor.domain.remote.main.ProductCategory
+import com.coderbdk.bazardor.domain.remote.main.ProductService
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
