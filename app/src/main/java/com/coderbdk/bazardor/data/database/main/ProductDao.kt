@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.database.main
+package com.coderbdk.bazardor.data.database.main
 
 import androidx.room.Dao
 import androidx.room.Query

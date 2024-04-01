@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.prefs
+package com.coderbdk.bazardor.data.prefs
 
 import android.content.Context
 import android.content.SharedPreferences

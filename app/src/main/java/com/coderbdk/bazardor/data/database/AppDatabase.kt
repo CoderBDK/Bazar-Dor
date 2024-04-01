@@ -1,13 +1,13 @@
-package com.coderbdk.bazardor.database
+package com.coderbdk.bazardor.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
-import com.coderbdk.bazardor.database.main.ProductCategoryDao
-import com.coderbdk.bazardor.database.main.ProductCategoryEntity
-import com.coderbdk.bazardor.database.main.ProductDao
-import com.coderbdk.bazardor.database.main.ProductEntity
+import com.coderbdk.bazardor.data.database.main.ProductCategoryDao
+import com.coderbdk.bazardor.data.database.main.ProductCategoryEntity
+import com.coderbdk.bazardor.data.database.main.ProductDao
+import com.coderbdk.bazardor.data.database.main.ProductEntity
 
 @Database(entities = [ProductCategoryEntity::class, ProductEntity::class],
     version = 1,

@@ -2,7 +2,7 @@ package com.coderbdk.bazardor.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.coderbdk.bazardor.repository.MainRepository
+import com.coderbdk.bazardor.data.repository.MainRepository
 
 class MainViewModelFactory(private val repository: MainRepository) : ViewModelProvider.Factory{
     @Suppress("UNCHECKED_CAST")

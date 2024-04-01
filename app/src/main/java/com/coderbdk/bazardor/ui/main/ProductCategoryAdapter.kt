@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.coderbdk.bazardor.R
 import com.coderbdk.bazardor.databinding.ItemProductCategoryListBinding
-import com.coderbdk.bazardor.network.main.ProductCategory
+import com.coderbdk.bazardor.data.network.main.ProductCategory
 
 class ProductCategoryAdapter(
     private val context: Context,
