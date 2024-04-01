@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.coderbdk.bazardor.R
 import com.coderbdk.bazardor.databinding.ItemProductListBinding
-import com.coderbdk.bazardor.domain.remote.main.Product
+import com.coderbdk.bazardor.network.main.Product
 
 class ProductAdapter(val context: Context,private var list: List<Product>): RecyclerView.Adapter<ProductAdapter.MainHolder>() {
 

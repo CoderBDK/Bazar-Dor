@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.domain.remote.main
+package com.coderbdk.bazardor.network.main
 
 import retrofit2.Call
 import retrofit2.http.FieldMap

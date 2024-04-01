@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coderbdk.bazardor.domain.remote.api.ApiResponse
-import com.coderbdk.bazardor.domain.remote.main.Product
-import com.coderbdk.bazardor.domain.remote.main.ProductCategory
-import com.coderbdk.bazardor.domain.repository.MainRepository
+import com.coderbdk.bazardor.network.main.Product
+import com.coderbdk.bazardor.network.main.ProductCategory
+import com.coderbdk.bazardor.repository.MainRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.domain.remote.main
+package com.coderbdk.bazardor.network.main
 
 import com.coderbdk.bazardor.domain.remote.api.ApiResponse
 import com.coderbdk.bazardor.domain.remote.api.RemoteApiService

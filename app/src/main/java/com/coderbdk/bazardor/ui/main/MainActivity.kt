@@ -18,9 +18,9 @@ import com.coderbdk.bazardor.R
 import com.coderbdk.bazardor.databinding.ActivityMainAppBinding
 import com.coderbdk.bazardor.databinding.ContentBinding
 import com.coderbdk.bazardor.databinding.DialogDatePickerBinding
-import com.coderbdk.bazardor.domain.local.room.AppDatabase
-import com.coderbdk.bazardor.domain.local.shared.main.MainPrefs
-import com.coderbdk.bazardor.domain.repository.MainRepository
+import com.coderbdk.bazardor.database.AppDatabase
+import com.coderbdk.bazardor.prefs.MainPrefs
+import com.coderbdk.bazardor.repository.MainRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch

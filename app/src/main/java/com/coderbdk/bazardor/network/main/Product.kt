@@ -1,4 +1,4 @@
-package com.coderbdk.bazardor.domain.remote.main
+package com.coderbdk.bazardor.network.main
 
 import com.google.gson.annotations.SerializedName
 
